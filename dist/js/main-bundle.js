@@ -151,7 +151,7 @@ eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtim
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./main.css */ \"./src/main.css\");\r\n__webpack_require__(/*! ./index.html */ \"./src/index.html\");\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__(/*! ./main.css */ \"./src/main.css\");\n\n__webpack_require__(/*! ./index.html */ \"./src/index.html\");\n\nvar a = function () {\n  console.log(\"Hello from the future!\");\n};\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
