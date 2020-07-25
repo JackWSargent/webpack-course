@@ -4,12 +4,20 @@ body {
 }
 
 h1 {
-    height: 100vh;
-    display: flex; /**/
     color: white;
-    align-items: center;
-    justify-content: center;
     font-size: 5rem;
     font-family: sans-serif;
     text-shadow: 0 0 20px black;
+}
+img {
+    border-radius: 100%;
+    width: 300px;
+    box-shadow: 0 0 20px black;
+}
+.profile {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
 }

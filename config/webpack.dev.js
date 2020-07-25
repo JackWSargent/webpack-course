@@ -12,6 +12,7 @@ module.exports = {
     },
     devServer: {
         contentBase: "dist",
+        overlay: true,
     },
     module: {
         rules: [
@@ -23,6 +24,37 @@ module.exports = {
                     },
                     {
                         loader: "css-loader",
+                    },
+                ],
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].html", // Tells name of file you would like to create
+                        },
+                    },
+                    {
+                        loader: "extract-loader", // Tells webpack to make a separate file
+                    },
+                    {
+                        loader: "html-loader", // Does linting
+                        options: {
+                            attributes: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(jpg|gif|png)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "images/[name].[ext]",
+                        },
                     },
                 ],
             },
