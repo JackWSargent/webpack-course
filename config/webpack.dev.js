@@ -1,5 +1,6 @@
 const path = require("path");
-
+const webpack = require("webpack");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: {
         main: ["core-js/fn/promise", "./src/main.js"],
@@ -13,6 +14,10 @@ module.exports = {
     devServer: {
         contentBase: "dist",
         overlay: true,
+        hot: true,
+        stats: {
+            colors: true,
+        },
     },
     module: {
         rules: [
@@ -69,4 +74,10 @@ module.exports = {
             },
         ],
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new HTMLWebpackPlugin({
+            template: "./src/index.html",
+        }),
+    ],
 };
