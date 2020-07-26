@@ -36,6 +36,6 @@
   "scripts": {
     "build": "webpack --config=config/webpack.dev.js --watch",
     "start": "webpack-dev-server --config=config/webpack.dev.js",
-    "dev": "nodemon --watch config --watch src/server src/server/main.js"
+    "dev": "nodemon --inspect --watch config --watch src/server src/server/main.js"
   }
 }
