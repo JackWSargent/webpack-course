@@ -4,15 +4,12 @@
             "@babel/preset-env",
             {
                 "targets": {
-                    "browsers": [
-                        "last 2 versions"
-                    ]
+                    "browsers": ["last 2 versions"]
                 },
-                "debug": true
+                "debug": true //
             }
-        ]
+        ],
+        "@babel/preset-react"
     ],
-    "plugins": [
-        "@babel/plugin-transform-runtime"
-    ]
+    "plugins": ["@babel/plugin-transform-runtime"]
 }

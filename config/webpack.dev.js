@@ -1,20 +1,20 @@
 const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
     entry: {
-        main: ["core-js/fn/promise", "./src/main.js"],
+        main: ["./src/main.js"],
     },
     mode: "development",
     output: {
         filename: "[name]-bundle.js",
-        path: path.resolve(__dirname, "../dist/js"),
+        path: path.resolve(__dirname, "../dist"),
         publicPath: "/",
     },
     devServer: {
         contentBase: "dist",
         overlay: true,
-        hot: true,
         stats: {
             colors: true,
         },
@@ -24,12 +24,12 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: "babel-loader",
                     },
                 ],
-                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
@@ -37,8 +37,17 @@ module.exports = {
                     {
                         loader: "style-loader",
                     },
+                    { loader: "css-loader" },
+                ],
+            },
+            {
+                test: /\.jpg|gif|png$/,
+                use: [
                     {
-                        loader: "css-loader",
+                        loader: "file-loader",
+                        options: {
+                            name: "images/[name].[ext]",
+                        },
                     },
                 ],
             },
@@ -46,30 +55,7 @@ module.exports = {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].html", // Tells name of file you would like to create
-                        },
-                    },
-                    {
-                        loader: "extract-loader", // Tells webpack to make a separate file
-                    },
-                    {
-                        loader: "html-loader", // Does linting
-                        options: {
-                            attributes: true,
-                        },
-                    },
-                ],
-            },
-            {
-                test: /\.(jpg|gif|png)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "images/[name].[ext]",
-                        },
+                        loader: "html-loader",
                     },
                 ],
             },
