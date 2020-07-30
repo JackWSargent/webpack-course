@@ -15,6 +15,7 @@ module.exports = {
     devServer: {
         contentBase: "dist",
         overlay: true,
+        hot: true,
         stats: {
             colors: true,
         },
@@ -36,12 +37,24 @@ module.exports = {
                 use: [{ loader: "style-loader" }, { loader: "css-loader" }],
             },
             {
-                test: /\.(jpg|gif|png)$/,
+                test: /\.jpg$/,
+                include: [path.resolve(__dirname, "src/images")],
                 use: [
                     {
                         loader: "file-loader",
                         options: {
-                            name: "images/[name].[ext]",
+                            name: "images/[name]-[hash:4].[ext]",
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.ejs$/,
+                use: [
+                    {
+                        loader: "ejs-loader",
+                        options: {
+                            esModule: false,
                         },
                     },
                 ],
@@ -53,13 +66,6 @@ module.exports = {
                         loader: "pug-loader",
                     },
                 ],
-            },
-            {
-                test: /\.ejs$/,
-                loader: "ejs-loader",
-                options: {
-                    esModule: false,
-                },
             },
             {
                 test: /\.hbs$/,
@@ -75,10 +81,18 @@ module.exports = {
         ],
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(), // Enable HMR
-        new webpack.NamedModulesPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            test: /\.hbs$/,
+            use: [
+                {
+                    loader: "handlebars-loader",
+                    query: { inlineRequires: "/images/" },
+                },
+            ],
+        }),
+        new webpack.HotModuleReplacementPlugin(),
         new HTMLWebpackPlugin({
-            template: "./src/index.ejs",
+            template: "./src/index.hbs",
             inject: true,
             title: "Link's Journal",
         }),

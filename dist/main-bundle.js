@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "36618e0692cbccc67923";
+/******/ 	var hotCurrentHash = "fa9be19792599a36365f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -3585,7 +3585,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "link.jpg");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "images/link.jpg");
 
 /***/ }),
 
@@ -3594,7 +3594,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./src/index.ejs ***!
   \***********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 module.exports = function(obj) {
 obj || (obj = {});
@@ -3602,7 +3602,9 @@ var __t, __p = '';
 with (obj) {
 __p += '<html>\r\n    <head>\r\n        <title>' +
 ((__t = ( htmlWebpackPlugin.options.title )) == null ? '' : __t) +
-'</title>\r\n    </head>\r\n    <body>\r\n        <div class="profile">\r\n            <img src="./images/link.jpg" />\r\n            <h1>Link\'s Journal</h1>\r\n        </div>\r\n    </body>\r\n</html>\r\n';
+'</title>\r\n    </head>\r\n    <body>\r\n        <div class="profile">\r\n            <img src="' +
+((__t = (__webpack_require__(/*! ./images/link.jpg */ "./src/images/link.jpg").default)) == null ? '' : __t) +
+'" />\r\n            <h1>Link\'s Journal</h1>\r\n        </div>\r\n    </body>\r\n</html>\r\n';
 
 }
 return __p
