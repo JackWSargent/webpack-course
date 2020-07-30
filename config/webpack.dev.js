@@ -38,12 +38,11 @@ module.exports = {
             },
             {
                 test: /\.jpg$/,
-                include: [path.resolve(__dirname, "src/images")],
                 use: [
                     {
                         loader: "file-loader",
                         options: {
-                            name: "images/[name]-[hash:4].[ext]",
+                            name: "images/[name].[ext]",
                         },
                     },
                 ],
