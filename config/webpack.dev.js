@@ -3,8 +3,12 @@ const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: {
-        main: ["core-js/fn/promise", "./src/main.js"],
-        ts: ["./src/index.ts"],
+        main: ["./src/main.js"],
+        polyfills: ["./src/angular-polyfills.ts"],
+        angular: ["./src/angular.ts"],
+    },
+    resolve: {
+        extensions: ["js", "ts"],
     },
     mode: "development",
     output: {
@@ -15,7 +19,7 @@ module.exports = {
     devServer: {
         contentBase: "dist",
         overlay: true,
-        hot: true,
+        historyApiFallback: true,
         stats: {
             colors: true,
         },
@@ -87,6 +91,8 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.ContextReplacementPlugin(/angular(\\|\/)core/, path.join(__dirname, "./src"), {}),
         new HTMLWebpackPlugin({
             template: "./src/index.html",
         }),
